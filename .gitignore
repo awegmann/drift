@@ -5,8 +5,12 @@
 /.classpath
 /.project
 /.idea
-/audiobooktool.iml
-/audiobooktool.ipr
-/audiobooktool.iws
+/drift.iml
+/drift.ipr
+/drift.iws
 /out
 *iml
+/Caveats
+/Downloading
+/Pouring
+/data
