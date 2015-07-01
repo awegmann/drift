@@ -1,0 +1,12 @@
+/build
+/bin
+/.settings
+/.gradle
+/.classpath
+/.project
+/.idea
+/audiobooktool.iml
+/audiobooktool.ipr
+/audiobooktool.iws
+/out
+*iml
