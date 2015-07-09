@@ -16,6 +16,6 @@
         <constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
     </bean>
 
-    <mongo:repositories base-package="de.codeshelf.drift"/>
+    <mongo:repositories base-package="de.codeshelf.drift.repositories"/>
 
 </beans>

@@ -1,7 +1,7 @@
 package de.codeshelf.drift.repositories;
 
-import de.codeshelf.drift.data.Drift;
-import de.codeshelf.drift.data.User;
+import de.codeshelf.drift.repositories.codeshelf.drift.data.Drift;
+import de.codeshelf.drift.repositories.codeshelf.drift.data.User;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,7 +11,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
+import static junit.framework.Assert.assertFalse;
+import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 /**
  * User: andy
@@ -74,5 +77,13 @@ public class DriftRepositoryTest {
 
     driftRepository.save(drift);
 
+    List<Drift> driftList = driftRepository.findByTitle("Charlies Drift");
+    Drift loadedDrift = driftList.get(0);
+    assertEquals("charlie", loadedDrift.getCreator().getUserName());
+    assertFalse(drift == loadedDrift);
+    drift.setTitle("new Title");
+    assertTrue(drift.getTitle() != loadedDrift.getTitle());
+
+    driftRepository.save(drift);
   }
 }

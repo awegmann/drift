@@ -1,6 +1,6 @@
 package de.codeshelf.drift.repositories;
 
-import de.codeshelf.drift.data.User;
+import de.codeshelf.drift.repositories.codeshelf.drift.data.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**

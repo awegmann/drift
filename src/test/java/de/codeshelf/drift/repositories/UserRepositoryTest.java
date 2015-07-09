@@ -1,7 +1,6 @@
 package de.codeshelf.drift.repositories;
 
-import de.codeshelf.drift.data.Drift;
-import de.codeshelf.drift.data.User;
+import de.codeshelf.drift.repositories.codeshelf.drift.data.User;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

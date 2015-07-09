@@ -1,16 +1,20 @@
-package de.codeshelf.drift.data;
+package de.codeshelf.drift.repositories.codeshelf.drift.data;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * User: andy
  * Date: 30.06.15
  */
+@Document
 public class User {
 
   @Id
   private String id;
 
+  @Indexed
   private String userName;
 
   private String firstName;

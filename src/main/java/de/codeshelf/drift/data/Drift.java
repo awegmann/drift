@@ -1,7 +1,7 @@
-package de.codeshelf.drift.data;
+package de.codeshelf.drift.repositories.codeshelf.drift.data;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Reference;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
 /**
  * User: andy
@@ -21,7 +21,7 @@ public class Drift {
     this.creator = creator;
   }
 
-  @Reference
+  @DBRef
   private User   creator;
 
   public String getTitle() {

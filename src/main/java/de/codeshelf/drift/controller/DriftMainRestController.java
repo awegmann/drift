@@ -1,6 +1,6 @@
-package de.codeshelf.drift.controller;
+package de.codeshelf.drift.repositories.codeshelf.drift.controller;
 
-import de.codeshelf.drift.data.Drift;
+import de.codeshelf.drift.repositories.codeshelf.drift.data.Drift;
 import de.codeshelf.drift.repositories.DriftRepositoryIF;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
