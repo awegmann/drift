@@ -1,7 +1,8 @@
-package de.codeshelf.drift.repositories.codeshelf.drift.controller;
+package de.codeshelf.drift.controller;
 
-import de.codeshelf.drift.repositories.codeshelf.drift.data.Drift;
+import de.codeshelf.drift.data.Drift;
 import de.codeshelf.drift.repositories.DriftRepositoryIF;
+import org.apache.commons.collections.IteratorUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class DriftMainRestController {
   public List<Drift> getDriftList() {
     log.info("getDriftList called()");
 
-    return dataProvider.findAll();
+    return IteratorUtils.toList(dataProvider.findAll().iterator());
   }
 
   @RequestMapping(method = RequestMethod.POST)

@@ -1,7 +1,8 @@
 package de.codeshelf.drift.repositories;
 
-import de.codeshelf.drift.repositories.codeshelf.drift.data.Drift;
-import de.codeshelf.drift.repositories.codeshelf.drift.data.User;
+import de.codeshelf.drift.data.Drift;
+import de.codeshelf.drift.data.User;
+import org.apache.commons.collections.IteratorUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,10 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
-import static junit.framework.Assert.assertFalse;
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 /**
  * User: andy
@@ -38,14 +36,15 @@ public class DriftRepositoryTest {
 
   @Test
   public void testEmptyRepo() {
-    List<Drift> all = driftRepository.findAll();
-    assertEquals("keine Objekte erwartet", 0, all.size());
+    Iterable<Drift> all = driftRepository.findAll();
+
+    assertFalse("keine Objekte erwartet", all.iterator().hasNext());
   }
 
   @Test
   public void addSomeAndFindAll() {
     driftRepository.save(new Drift("Alice 3"));
-    List<Drift> all = driftRepository.findAll();
+    List<Drift> all = IteratorUtils.toList(driftRepository.findAll().iterator());
 
     assertEquals("Ein element erwartet", 1, all.size());
   }
@@ -63,7 +62,7 @@ public class DriftRepositoryTest {
     List<Drift> alice = driftRepository.findByTitle("Alice 2");
     assertEquals("Ein element erwartet", 1, alice.size());
 
-    List<Drift> all = driftRepository.findAll();
+    List<Drift> all = IteratorUtils.toList(driftRepository.findAll().iterator());
     assertEquals("Vier Elemente erwartet", 4, all.size());
   }
 

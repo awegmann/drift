@@ -1,4 +1,4 @@
-package de.codeshelf.drift.repositories.codeshelf.drift.data;
+package de.codeshelf.drift.data;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;

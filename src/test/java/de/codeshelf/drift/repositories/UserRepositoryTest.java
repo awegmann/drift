@@ -1,6 +1,7 @@
 package de.codeshelf.drift.repositories;
 
-import de.codeshelf.drift.repositories.codeshelf.drift.data.User;
+import de.codeshelf.drift.data.User;
+import org.apache.commons.collections.IteratorUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,14 +32,14 @@ public class UserRepositoryTest {
 
   @Test
   public void testEmptyRepo() {
-    List<User> all = repository.findAll();
+    List<User> all = IteratorUtils.toList(repository.findAll().iterator());
     assertEquals("keine Objekte erwartet", 0, all.size());
   }
 
   @Test
   public void addSomeAndFindAll() {
-    repository.save(new User("andy","Andreas","Wegmann","andy@nowhere.de","1232321"));
-    List<User> all = repository.findAll();
+    repository.save(new User("andy", "Andreas", "Wegmann", "andy@nowhere.de", "1232321"));
+    List<User> all = IteratorUtils.toList(repository.findAll().iterator());
 
     assertEquals("Ein element erwartet", 1, all.size());
   }
@@ -46,7 +47,7 @@ public class UserRepositoryTest {
   @Test
   public void addSomeAndFindByName() {
     repository.save(new User("alice","Alice","Allon",null,"1232321"));
-    repository.save(new User("bob","Bob","Balloon",null,"1232321"));
+    repository.save(new User("bob", "Bob", "Balloon", null, "1232321"));
 
     User carol = repository.findByUserName("Carol");
     assertNull("Kein element erwartet", carol);
@@ -54,7 +55,7 @@ public class UserRepositoryTest {
     User alice = repository.findByUserName("alice");
     assertEquals("Alice erwartet", "Alice", alice.getFirstName());
 
-    List<User> all = repository.findAll();
+    List<User> all = IteratorUtils.toList(repository.findAll().iterator());
     assertEquals("Zwei Elemente erwartet", 2, all.size());
   }
 }
