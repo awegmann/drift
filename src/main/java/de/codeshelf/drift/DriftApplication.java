@@ -1,4 +1,4 @@
-package de.codeshelf.drift.repositories.codeshelf.drift;
+package de.codeshelf.drift;
 
 import de.codeshelf.drift.repositories.DriftRepositoryIF;
 import org.springframework.beans.factory.annotation.Autowired;

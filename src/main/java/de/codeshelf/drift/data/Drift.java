@@ -5,6 +5,8 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * User: andy
@@ -17,6 +19,19 @@ public class Drift {
   private String id;
   private String title;
   private Date creationDate;
+
+  private List<Posting> postings;
+
+  @Override
+  public String toString() {
+    return "Drift{" +
+            "id='" + id + '\'' +
+            ", title='" + title + '\'' +
+            ", creationDate=" + creationDate +
+            ", postings=" + postings +
+            ", creator=" + creator +
+            '}';
+  }
 
   public User getCreator() {
     return creator;
@@ -53,21 +68,28 @@ public class Drift {
     this.creationDate = creationDate;
   }
 
+  public List<Posting> getPostings() {
+    return postings;
+  }
+
+  public void setPostings(List<Posting> postings) {
+    this.postings = postings;
+  }
+
+  public void addPosting(Posting posting) {
+    if (postings==null) {
+      postings=new LinkedList<>();
+    }
+
+    this.postings.add(posting);
+  }
+
   public Drift(String title) {
     this.title = title;
+    this.creationDate = new Date();
   }
 
   public Drift() {
-  }
-
-  @Override
-  public String toString() {
-    return "Drift{" +
-            "id='" + id + '\'' +
-            ", title='" + title + '\'' +
-            ", creationDate=" + creationDate +
-            ", creator=" + creator +
-            '}';
   }
 
 }
