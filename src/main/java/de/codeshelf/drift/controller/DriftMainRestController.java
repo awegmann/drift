@@ -1,7 +1,9 @@
 package de.codeshelf.drift.controller;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import de.codeshelf.drift.data.Drift;
 import de.codeshelf.drift.data.Posting;
+import de.codeshelf.drift.data.views.DriftView;
 import de.codeshelf.drift.repositories.DriftRepositoryIF;
 import org.apache.commons.collections.IteratorUtils;
 import org.apache.commons.logging.Log;
@@ -27,6 +29,7 @@ public class DriftMainRestController {
   DriftRepositoryIF dataProvider;
 
   @RequestMapping(method = RequestMethod.GET)
+  @JsonView(DriftView.Summary.class)
   public List<Drift> getDriftList() {
     log.info("getDriftList called()");
 

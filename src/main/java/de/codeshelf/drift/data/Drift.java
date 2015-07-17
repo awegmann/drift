@@ -1,5 +1,7 @@
 package de.codeshelf.drift.data;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import de.codeshelf.drift.data.views.DriftView;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -7,6 +9,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+
+
 
 /**
  * User: andy
@@ -16,8 +20,13 @@ import java.util.List;
 public class Drift {
 
   @Id
+  @JsonView(DriftView.Summary.class)
   private String id;
+
+  @JsonView(DriftView.Summary.class)
   private String title;
+
+  @JsonView(DriftView.Summary.class)
   private Date creationDate;
 
   private List<Posting> postings;
