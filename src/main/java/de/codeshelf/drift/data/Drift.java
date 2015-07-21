@@ -29,6 +29,7 @@ public class Drift {
   @JsonView(DriftView.Summary.class)
   private Date creationDate;
 
+  @DBRef
   private List<Posting> postings;
 
   @Override

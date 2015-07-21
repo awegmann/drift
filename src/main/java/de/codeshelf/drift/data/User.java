@@ -20,6 +20,7 @@ public class User {
   private String firstName;
   private String lastName;
   private String email;
+  private boolean enabled;
 
   private String passwordHash;
 
@@ -29,6 +30,7 @@ public class User {
     this.lastName = lastName;
     this.email = email;
     this.passwordHash = passwordHash;
+    this.enabled = true;
   }
 
   public User() {
@@ -72,5 +74,17 @@ public class User {
 
   public void setPasswordHash(String passwordHash) {
     this.passwordHash = passwordHash;
+  }
+
+  public String getId() {
+    return id;
+  }
+
+  public boolean isEnabled() {
+    return enabled;
+  }
+
+  public void setEnabled(boolean enabled) {
+    this.enabled = enabled;
   }
 }

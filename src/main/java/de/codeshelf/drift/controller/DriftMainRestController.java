@@ -5,6 +5,7 @@ import de.codeshelf.drift.data.Drift;
 import de.codeshelf.drift.data.Posting;
 import de.codeshelf.drift.data.views.DriftView;
 import de.codeshelf.drift.repositories.DriftRepositoryIF;
+import de.codeshelf.drift.repositories.PostingRepositoryIF;
 import org.apache.commons.collections.IteratorUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -27,6 +28,10 @@ public class DriftMainRestController {
 
   @Autowired
   DriftRepositoryIF dataProvider;
+
+  @Autowired
+  PostingRepositoryIF postingRepository;
+
 
   @RequestMapping(method = RequestMethod.GET)
   @JsonView(DriftView.Summary.class)
@@ -57,6 +62,7 @@ public class DriftMainRestController {
     Drift drift = dataProvider.findOne(driftId);
     if (posting.getCreationTime()==null) {
       posting.setCreationTime(new Date());
+      postingRepository.save(posting);
     }
     drift.addPosting(posting);
     dataProvider.save(drift);

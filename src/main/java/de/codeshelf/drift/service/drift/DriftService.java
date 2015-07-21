@@ -1,4 +1,4 @@
-package de.codeshelf.drift.service;
+package de.codeshelf.drift.service.drift;
 
 import de.codeshelf.drift.data.Drift;
 import de.codeshelf.drift.repositories.DriftRepositoryIF;
