@@ -27,7 +27,7 @@ public class UserService {
    * @return a newly created User object
    * @throws UserAlreadyExistException thrown if a User with that userName already exists.
    */
-  User createNewUser(User newUser) throws UserAlreadyExistException {
+  User createNewUser(User newUser) throws UserAlreadyExistException, IllegalStateException {
     if (newUser == null) {
       throw new IllegalStateException("newUser is null");
     }

@@ -16,4 +16,5 @@
     <mongo:repositories base-package="de.codeshelf.drift.repositories"/>
 
     <bean id="UserService" class="de.codeshelf.drift.service.user.UserService"/>
+
 </beans>
