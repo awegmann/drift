@@ -1,11 +1,13 @@
 package de.codeshelf.drift.service.user;
 
 import de.codeshelf.drift.data.User;
+import de.codeshelf.drift.repositories.UserRepositoryIF;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoAdmin;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -22,9 +24,14 @@ public class UserServiceTest {
   @Autowired
   UserService userService;
 
+  @Autowired
+  UserRepositoryIF userRepository;
+
   @Before
   public void setUp() throws Exception {
-
+    for (User user : userRepository.findAll()) {
+      userRepository.delete(user);
+    }
   }
 
   @After
@@ -38,6 +45,18 @@ public class UserServiceTest {
     User createdUser = userService.createNewUser(newUser);
 
     assert(newUser.equals(createdUser));
+
+  }
+
+  @Test
+  public void testCreateNewUserNullCheck() throws Exception {
+    try {
+      User createdUser = userService.createNewUser(null);
+      fail("Exception erwartet");
+    } catch (IllegalStateException e) {
+      ;
+    }
+
 
   }
 
